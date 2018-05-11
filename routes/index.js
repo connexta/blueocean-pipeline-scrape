@@ -13,7 +13,7 @@ router.get('/', (req, res) => {
 router.get('/pipeline', (req, res) => {
     const { host, project, branch, id } = req.query;
 
-    const url = `https://${host}/service/jenkins/blue/organizations/jenkins/${project}/detail/${branch}/${id}/pipeline`;
+    const url = `${host}/service/jenkins/blue/organizations/jenkins/${project}/detail/${branch}/${id}/pipeline`;
 
     const nightmare = Nightmare({
         switches: {
@@ -50,7 +50,7 @@ router.get('/pipeline', (req, res) => {
 router.get('/pipeline-demo', (req, res) => {
     const { host, project, branch, id } = req.query;
 
-    const url = `https://${host}/service/jenkins/blue/organizations/jenkins/${project}/detail/${branch}/${id}/pipeline`;
+    const url = `${host}/service/jenkins/blue/organizations/jenkins/${project}/detail/${branch}/${id}/pipeline`;
 
     const nightmare = Nightmare({
         switches: {
