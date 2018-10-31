@@ -2751,9 +2751,9 @@ fieldset {
   transform: translateY(3px);
 }
 .svg-icon {
-  display: 'inline-block';
-  vertical-align: 'middle';
-  user-select: 'none';
+  display: inline-block;
+  vertical-align: middle;
+  user-select: none;
   fill: #ffffff;
 }
 button.IconButton {
@@ -3205,6 +3205,9 @@ fieldset[disabled] .RadioButtonGroup .RadioButtonGroup-item input[type="radio"] 
 .svgResultStatus.no-background .circle-bg {
   opacity: 0;
 }
+.svgResultStatus {
+  transform: translateZ(0);
+}
 .svgResultStatus circle.success {
   stroke: none;
   fill: #8cc04f;
@@ -3259,6 +3262,18 @@ fieldset[disabled] .RadioButtonGroup .RadioButtonGroup-item input[type="radio"] 
 .inverse .progress-spinner.running circle.inner {
   fill: #4c9bd5;
   stroke: #4c9bd5;
+}
+.progress-spinner.running.spin {
+  animation: progress-spinner-rotate 4s linear;
+  animation-iteration-count: infinite;
+}
+@keyframes progress-spinner-rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 .progress-spinner circle.inner,
 .progress-spinner.running.spin circle.inner {
@@ -3357,6 +3372,11 @@ fieldset[disabled] .RadioButtonGroup .RadioButtonGroup-item input[type="radio"] 
   display: flex;
   align-items: flex-start;
   margin: -1px 0 -1px -1px;
+  transform: translateZ(0);
+}
+.result-item-icon .spinAnimation {
+  animation: progress-spinner-rotate 4s linear;
+  animation-iteration-count: infinite;
 }
 .result-item-title {
   flex: 1 1 auto;
@@ -3433,7 +3453,7 @@ fieldset[disabled] .RadioButtonGroup .RadioButtonGroup-item input[type="radio"] 
 }
 .pipeline-selection-highlight circle {
   fill: none;
-  stroke: #949393;
+  stroke: #4a90e2;
 }
 td,
 th {
@@ -3905,6 +3925,10 @@ fieldset[disabled] .PasswordInput .TextInput-control {
 .Alert.Info .border {
   background-color: #4c9bd5;
 }
+.nosteps-container .Alert.Info {
+  border-radius: 3px 3px 0 0;
+  padding-bottom: 0;
+}
 .Alert.Warning {
   border-left-color: #f5a623;
   color: #f5a623;
@@ -3976,6 +4000,33 @@ a.JTable-cell:hover,
 }
 .JTable-cell:last-child {
   padding-right: 23px;
+}
+.JTable-cell .actions-container {
+  position: relative;
+}
+.JTable-cell .actions-container:after {
+  position: absolute;
+  content: " ";
+  pointer-events: none;
+  background-color: white;
+  transition: background-color 0.15s;
+  top: 0;
+  right: 24px;
+  width: calc(76%);
+  height: 100%;
+}
+.JTable-row--rollOver:hover .JTable-cell .actions-container:after {
+  background-color: #fafbfd;
+}
+.JTable-row--rollOver:hover .JTable-cell .actions-container:after {
+  background-color: transparent;
+}
+.JTable-cell .actions-container .ParametersRunButton,
+.JTable-cell .actions-container .history-button-component,
+.JTable-cell .actions-container .jenkins-pipeline-branches-list-action,
+.JTable-cell .actions-container .jenkins-pipeline-branches-list-action > div {
+  display: inline-block;
+  vertical-align: middle;
 }
 .TableCell--actions .JTable-cell-contents {
   display: flex;
@@ -4073,8 +4124,22 @@ h6 {
 .success-bg {
   background-color: #78b037;
 }
+.success-bg .actions-container:after {
+  background-color: #78b037;
+  transition: background-color 0.15s;
+}
+.success-bg:hover .actions-container:after {
+  background-color: transparent;
+}
 .success-bg-lite {
   background-color: #8cc04f;
+}
+.success-bg-lite .actions-container:after {
+  background-color: #8cc04f;
+  transition: background-color 0.15s;
+}
+.success-bg-lite:hover .actions-container:after {
+  background-color: transparent;
 }
 .success-fill {
   fill: #78b037;
@@ -4091,8 +4156,22 @@ h6 {
 .info-bg {
   background-color: #3a70b0;
 }
+.info-bg .actions-container:after {
+  background-color: #3a70b0;
+  transition: background-color 0.15s;
+}
+.info-bg:hover .actions-container:after {
+  background-color: transparent;
+}
 .info-bg-lite {
   background-color: #4c9bd5;
+}
+.info-bg-lite .actions-container:after {
+  background-color: #4c9bd5;
+  transition: background-color 0.15s;
+}
+.info-bg-lite:hover .actions-container:after {
+  background-color: transparent;
 }
 .info-fill {
   fill: #3a70b0;
@@ -4109,8 +4188,22 @@ h6 {
 .running-bg {
   background-color: #3a70b0;
 }
+.running-bg .actions-container:after {
+  background-color: #3a70b0;
+  transition: background-color 0.15s;
+}
+.running-bg:hover .actions-container:after {
+  background-color: transparent;
+}
 .running-bg-lite {
   background-color: #4c9bd5;
+}
+.running-bg-lite .actions-container:after {
+  background-color: #4c9bd5;
+  transition: background-color 0.15s;
+}
+.running-bg-lite:hover .actions-container:after {
+  background-color: transparent;
 }
 .running-fill {
   fill: #3a70b0;
@@ -4127,8 +4220,22 @@ h6 {
 .failure-bg {
   background-color: #d54c53;
 }
+.failure-bg .actions-container:after {
+  background-color: #d54c53;
+  transition: background-color 0.15s;
+}
+.failure-bg:hover .actions-container:after {
+  background-color: transparent;
+}
 .failure-bg-lite {
   background-color: #d54c53;
+}
+.failure-bg-lite .actions-container:after {
+  background-color: #d54c53;
+  transition: background-color 0.15s;
+}
+.failure-bg-lite:hover .actions-container:after {
+  background-color: transparent;
 }
 .failure-fill {
   fill: #d54c53;
@@ -4145,8 +4252,22 @@ h6 {
 .aborted-bg {
   background-color: #4a4a4a;
 }
+.aborted-bg .actions-container:after {
+  background-color: #4a4a4a;
+  transition: background-color 0.15s;
+}
+.aborted-bg:hover .actions-container:after {
+  background-color: transparent;
+}
 .aborted-bg-lite {
   background-color: #949393;
+}
+.aborted-bg-lite .actions-container:after {
+  background-color: #949393;
+  transition: background-color 0.15s;
+}
+.aborted-bg-lite:hover .actions-container:after {
+  background-color: transparent;
 }
 .aborted-fill {
   fill: #4a4a4a;
@@ -4163,8 +4284,22 @@ h6 {
 .unstable-bg {
   background-color: #f5a623;
 }
+.unstable-bg .actions-container:after {
+  background-color: #f5a623;
+  transition: background-color 0.15s;
+}
+.unstable-bg:hover .actions-container:after {
+  background-color: transparent;
+}
 .unstable-bg-lite {
   background-color: #f6b44b;
+}
+.unstable-bg-lite .actions-container:after {
+  background-color: #f6b44b;
+  transition: background-color 0.15s;
+}
+.unstable-bg-lite:hover .actions-container:after {
+  background-color: transparent;
 }
 .unstable-fill {
   fill: #f5a623;
@@ -4181,8 +4316,22 @@ h6 {
 .not_built-bg {
   background-color: #4a4a4a;
 }
+.not_built-bg .actions-container:after {
+  background-color: #4a4a4a;
+  transition: background-color 0.15s;
+}
+.not_built-bg:hover .actions-container:after {
+  background-color: transparent;
+}
 .not_built-bg-lite {
   background-color: #949393;
+}
+.not_built-bg-lite .actions-container:after {
+  background-color: #949393;
+  transition: background-color 0.15s;
+}
+.not_built-bg-lite:hover .actions-container:after {
+  background-color: transparent;
 }
 .not_built-fill {
   fill: #4a4a4a;
@@ -4199,8 +4348,22 @@ h6 {
 .queued-bg {
   background-color: #4a4a4a;
 }
+.queued-bg .actions-container:after {
+  background-color: #4a4a4a;
+  transition: background-color 0.15s;
+}
+.queued-bg:hover .actions-container:after {
+  background-color: transparent;
+}
 .queued-bg-lite {
   background-color: #949393;
+}
+.queued-bg-lite .actions-container:after {
+  background-color: #949393;
+  transition: background-color 0.15s;
+}
+.queued-bg-lite:hover .actions-container:after {
+  background-color: transparent;
 }
 .queued-fill {
   fill: #4a4a4a;
@@ -4217,8 +4380,22 @@ h6 {
 .paused-bg {
   background-color: #24b0d5;
 }
+.paused-bg .actions-container:after {
+  background-color: #24b0d5;
+  transition: background-color 0.15s;
+}
+.paused-bg:hover .actions-container:after {
+  background-color: transparent;
+}
 .paused-bg-lite {
   background-color: #24b0d5;
+}
+.paused-bg-lite .actions-container:after {
+  background-color: #24b0d5;
+  transition: background-color 0.15s;
+}
+.paused-bg-lite:hover .actions-container:after {
+  background-color: transparent;
 }
 .paused-fill {
   fill: #24b0d5;
@@ -4235,8 +4412,22 @@ h6 {
 .unknown-bg {
   background-color: #bd0fe1;
 }
+.unknown-bg .actions-container:after {
+  background-color: #bd0fe1;
+  transition: background-color 0.15s;
+}
+.unknown-bg:hover .actions-container:after {
+  background-color: transparent;
+}
 .unknown-bg-lite {
   background-color: #d54cc4;
+}
+.unknown-bg-lite .actions-container:after {
+  background-color: #d54cc4;
+  transition: background-color 0.15s;
+}
+.unknown-bg-lite:hover .actions-container:after {
+  background-color: transparent;
 }
 .unknown-fill {
   fill: #bd0fe1;
